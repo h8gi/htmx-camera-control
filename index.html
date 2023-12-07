@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+    <style>
+      #message .error {
+	color: red
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Camera Control</h1>
+    <form>
+      <input name="exposure" type="number" value="156"/>
+      <button hx-put="/parameters/exposure" hx-target="#message" hx-swap="innerHTML">
+	Set exposure
+      </button>
+    </form>
+    <div id="message"></div>
+    <img alt="" src="http://localhost:8081"/>
+  </body>
+</html>

@@ -27,7 +27,7 @@ func main() {
 			exposure, err := strconv.Atoi(r.FormValue("exposure"))
 			if err != nil {
 				errHtml := fmt.Sprintf("<span class=\"error\">値の変更に失敗しました: %v</span>", err)
-				http.Error(w, errHtml, http.StatusInternalServerError)
+				http.Error(w, errHtml, http.StatusBadRequest)
 				return
 			}
 

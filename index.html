@@ -4,21 +4,28 @@
     <meta charset="UTF-8"/>
     <title>Document</title>
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/response-targets.js"></script>
     <style>
-      #message .error {
+      #error {
 	color: red
       }
     </style>
   </head>
   <body>
     <h1>Camera Control</h1>
-    <form>
-      <input name="exposure" type="number" value="156"/>
-      <button hx-put="/parameters/exposure" hx-target="#message" hx-swap="innerHTML">
-	Set exposure
-      </button>
-    </form>
-    <div id="message"></div>
+    <div hx-ext="response-targets">
+      <form>
+	<input name="exposure" type="number" value="156"/>
+	<button hx-put="/parameters/exposure"
+		hx-target="#message"
+		hx-target-error="#error"
+		hx-swap="innerHTML">
+	  Set exposure
+	</button>
+      </form>
+      <div id="message"></div>
+      <div id="error"></div>
+    </div>
     <img alt="" src="http://localhost:8081"/>
   </body>
 </html>
